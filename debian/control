@@ -1,0 +1,17 @@
+Source: rpcemu
+Section: otherosfs
+Priority: optional
+Maintainer: John-Mark Bell <jmb@netsurf-browser.org>
+Build-Depends:
+  debhelper (>=10),
+  qtbase5-dev,
+  qtmultimedia5-dev
+Standards-Version: 4.1.2
+
+Package: rpcemu
+Architecture: any
+Depends:
+  libqt5multimedia5-plugins,
+  ${misc:Depends},
+  ${shlibs:Depends}
+Description: RPCEmu.

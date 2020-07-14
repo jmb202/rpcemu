@@ -1,0 +1,12 @@
+diff --git a/src/qt5/rpcemu.pro b/src/qt5/rpcemu.pro
+index 330be84..3789042 100644
+--- a/src/qt5/rpcemu.pro
++++ b/src/qt5/rpcemu.pro
+@@ -1,6 +1,6 @@
+ # http://doc.qt.io/qt-5/qmake-tutorial.html
+ 
+-CONFIG += debug_and_release
++CONFIG += debug_and_release dynarec
+ 
+ 
+ QT += core widgets gui multimedia

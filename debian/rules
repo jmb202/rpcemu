@@ -1,0 +1,15 @@
+#!/usr/bin/make -f
+
+%:
+	dh $@
+
+override_dh_auto_configure:
+	(cd src/qt5 && ./buildit.sh)
+
+override_dh_auto_build:
+	(cd src/qt5 && make)
+
+override_dh_install:
+	install -D -d $(CURDIR)/debian/rpcemu/usr/bin
+	install --mode=0755 rpcemu-recompiler $(CURDIR)/debian/rpcemu/usr/bin/
+

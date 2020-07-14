@@ -1,0 +1,5 @@
+rpcemu (0.9.3-1) buster; urgency=medium
+
+  * Initial release.
+
+ -- John-Mark Bell <jmb@netsurf-browser.org>  Tue, 14 Jul 2020 22:48:07 +0000

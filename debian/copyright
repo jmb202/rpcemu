@@ -1,0 +1,7 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: RPCEmu
+Source: https://www.marutan.net/rpcemu/
+
+Files: *
+Copyright: Copyright 2020 RPCEmu Developers
+License: GPL2+
