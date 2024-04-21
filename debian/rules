@@ -4,12 +4,17 @@
 	dh $@
 
 override_dh_auto_configure:
-	(cd src/qt5 && ./buildit.sh)
+	mkdir -p $(CURDIR)/debian/build-interpreter
+	(cd $(CURDIR)/debian/build-interpreter && qtchooser -run-tool=qmake -qt=5 $(CURDIR)/src/qt5/rpcemu.pro)
+	mkdir -p $(CURDIR)/debian/build-recompiler
+	(cd $(CURDIR)/debian/build-recompiler && qtchooser -run-tool=qmake -qt=5 "CONFIG+=dynarec" $(CURDIR)/src/qt5/rpcemu.pro)
 
 override_dh_auto_build:
-	(cd src/qt5 && make)
+	(cd $(CURDIR)/debian/build-interpreter && make)
+	(cd $(CURDIR)/debian/build-recompiler && make)
 
 override_dh_install:
 	install -D -d $(CURDIR)/debian/rpcemu/usr/bin
+	install --mode=0755 rpcemu-interpreter $(CURDIR)/debian/rpcemu/usr/bin/
 	install --mode=0755 rpcemu-recompiler $(CURDIR)/debian/rpcemu/usr/bin/
 

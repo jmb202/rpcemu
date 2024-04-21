@@ -1,3 +1,9 @@
+rpcemu (0.9.3-2) buster; urgency=medium
+
+  * Build both interpreter and recompiler.
+
+ -- John-Mark Bell <jmb@netsurf-browser.org>  Sun, 21 Apr 2024 18:14:44 +0100
+
 rpcemu (0.9.3-1) buster; urgency=medium
 
   * Initial release.
