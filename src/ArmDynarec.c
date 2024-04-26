@@ -46,6 +46,8 @@ int blockend;
 #	include "codegen_amd64.h"
 #elif defined i386 || defined __i386 || defined __i386__ || defined _X86_
 #	include "codegen_x86.h"
+#elif defined __aarch64__
+#	include "codegen_arm64.h"
 #else
 #	error "Fatal error : no recompiler available for this architecture"
 #endif

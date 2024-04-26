@@ -169,15 +169,21 @@ DESTDIR = ../..
 
 CONFIG(dynarec) {
 	SOURCES +=	../ArmDynarec.c
-	HEADERS +=	../ArmDynarecOps.h \
-			../codegen_x86_common.h
+	HEADERS +=	../ArmDynarecOps.h
 
-	contains(QMAKE_HOST.arch, x86_64):!win32: { # win32 always uses 32bit dynarec
-		HEADERS +=	../codegen_amd64.h
-		SOURCES +=	../codegen_amd64.c
+	instlibs = $$[QT_INSTALL_LIBS]
+	contains(QMAKE_HOST.arch, arm64)|contains(instlibs, .*aarch64.*):!win32 { # win32 for ARM not supported
+		HEADERS +=	../codegen_arm64.h
+		SOURCES +=	../codegen_arm64.c
 	} else {
-		HEADERS +=	../codegen_x86.h
-		SOURCES +=	../codegen_x86.c
+		HEADERS +=	../codegen_x86_common.h
+		contains(QMAKE_HOST.arch, x86_64):!win32: { # win32 always uses 32bit dynarec
+			HEADERS +=	../codegen_amd64.h
+			SOURCES +=	../codegen_amd64.c
+		} else {
+			HEADERS +=	../codegen_x86.h
+			SOURCES +=	../codegen_x86.c
+		}
 	}
 	
 	win32 {
